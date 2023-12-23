@@ -1,0 +1,25 @@
+GET http://localhost:3000/board
+
+###
+
+POST http://localhost:3000/board
+Content-Type: application/json
+
+{
+    "name": "geunho",
+    "contents": "new contetns"
+}
+
+###
+
+PUT http://localhost:3000/board/1
+Content-Type: application/json
+
+{
+    "name": "geunho",
+    "contents": "new contetns"
+}
+
+###
+
+DELETE http://localhost:3000/board/2
