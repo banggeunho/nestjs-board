@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserEntity } from 'src/entity/user.entity';
+import { UserEntity } from 'src/modules/user/user.entity';
 import { Repository } from 'typeorm';
+import { BoardEntity } from '../board/board.entity';
 
 @Injectable()
 export class UserService {
@@ -21,7 +22,16 @@ export class UserService {
     return null;
   }
 
-  getUsers() {
-    return this.userRepository.find();
+  public async getUsers() {
+    const qb = this.userRepository.createQueryBuilder('User');
+
+    qb.addSelect((subQuery) => {
+      return subQuery
+        .select('count(id)')
+        .from(BoardEntity, 'Board')
+        .where('Board.userId = User.id');
+    }, 'User_boardCount');
+
+    return qb.getMany();
   }
 }

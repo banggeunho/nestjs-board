@@ -3,8 +3,8 @@ import { BoardCreateDto } from './dto/board-create.dto';
 import { BoardUpdateDto } from './dto/board-update.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { UserEntity } from 'src/entity/user.entity';
-import { BoardEntity } from 'src/entity/board.entity';
+import { UserEntity } from 'src/modules/user/user.entity';
+import { BoardEntity } from 'src/modules/board/board.entity';
 
 @Injectable()
 export class BoardService {

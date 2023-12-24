@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { UserEntity } from './user.entity';
+import { UserEntity } from '../user/user.entity';
 
 @Entity({ name: 'Board' })
 export class BoardEntity {
@@ -30,6 +30,6 @@ export class BoardEntity {
   modifiedAt: Date;
 
   @ManyToOne(() => UserEntity)
-  @JoinColumn({ name: 'user_id' })
+  @JoinColumn({ name: 'userId' })
   user: UserEntity;
 }
