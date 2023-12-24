@@ -14,7 +14,7 @@ import { ApiTags } from '@nestjs/swagger';
 import { BoardCreateDto } from './dto/board-create.dto';
 import { BoardUpdateDto } from './dto/board-update.dto';
 
-@Controller('board')
+@Controller('boards')
 @ApiTags('Board')
 export class BoardController {
   constructor(private readonly boardService: BoardService) {}

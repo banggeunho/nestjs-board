@@ -1,11 +1,12 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { BoardModule } from './board/board.module';
+import { BoardModule } from './modules/board/board.module';
 import { LoggingMiddleWare } from './middleware/logging.middleware';
 import ConfigModule from './config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { config } from 'dotenv';
+import { UserModule } from './modules/user/user.module';
 
 config({ path: '.env.local' });
 
@@ -25,6 +26,7 @@ config({ path: '.env.local' });
       logger: 'advanced-console',
     }),
     BoardModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
