@@ -10,11 +10,15 @@ import {
 import { AppService } from './app.service';
 import { ApiTags } from '@nestjs/swagger';
 import { Ip } from './decorators/ip.decorator';
+import { ConfigService } from '@nestjs/config';
 
 @Controller()
 @ApiTags('main')
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(
+    private readonly appService: AppService,
+    private readonly configService: ConfigService,
+  ) {}
 
   private readonly logger = new Logger(AppController.name);
 
@@ -30,12 +34,13 @@ export class AppController {
 
   @Get('name')
   getNameQuery(@Ip() ip: string, @Query('name') name: string): string {
-    this.logger.debug(`${name} hello ${ip}`);
-    this.logger.fatal(`${name} hello ${ip}`);
-    this.logger.warn(`${name} hello ${ip}`);
-    this.logger.log(`${name} hello ${ip}`);
-    this.logger.verbose(`${name} hello ${ip}`);
-    this.logger.error(`${name} hello ${ip}`);
+    // this.logger.debug(`${name} hello ${ip}`);
+    // this.logger.fatal(`${name} hello ${ip}`);
+    // this.logger.warn(`${name} hello ${ip}`);
+    // this.logger.log(`${name} hello ${ip}`);
+    // this.logger.verbose(`${name} hello ${ip}`);
+    // this.logger.error(`${name} hello ${ip}`);
+    console.log(this.configService.get<string>('ENVIRONMENT'));
     return `${name} hello ${ip}`;
   }
 

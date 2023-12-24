@@ -3,9 +3,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { BoardModule } from './board/board.module';
 import { LoggingMiddleWare } from './middleware/logging.middleware';
-
+import ConfigModule from './config';
 @Module({
-  imports: [BoardModule],
+  imports: [ConfigModule(), BoardModule],
   controllers: [AppController],
   providers: [AppService],
 })
