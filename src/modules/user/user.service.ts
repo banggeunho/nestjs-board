@@ -1,8 +1,11 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserEntity } from 'src/modules/user/user.entity';
 import { Repository } from 'typeorm';
 import { BoardEntity } from '../board/board.entity';
+import { UserCreateDto } from './dto/user-create.dto';
+import { hash, compare } from 'bcrypt';
+import { UserLoginDto } from './dto/user-login.dto';
 
 @Injectable()
 export class UserService {
@@ -10,15 +13,36 @@ export class UserService {
     @InjectRepository(UserEntity)
     private userRepository: Repository<UserEntity>,
   ) {}
-  async signup(data) {
-    return null;
+  public async create(data: UserCreateDto) {
+    const { username, name, password } = data;
+    const encryptedPassword = await this.encrypt(password);
+    return this.userRepository.save({
+      username,
+      name,
+      password: encryptedPassword,
+    });
   }
 
-  async login(data) {
-    return null;
+  public async login(data: UserLoginDto) {
+    const { username, password } = data;
+    const user = await this.userRepository.findOneBy({
+      username,
+    });
+
+    if (!user) {
+      throw new HttpException('NOT_FOUND', HttpStatus.NOT_FOUND);
+    }
+
+    const match = await compare(password, user.password);
+
+    if (!match) {
+      throw new HttpException('UNAUTHORIZED', HttpStatus.UNAUTHORIZED);
+    }
+
+    return 'login success';
   }
 
-  getMe() {
+  public getMe() {
     return null;
   }
 
@@ -33,5 +57,9 @@ export class UserService {
     }, 'User_boardCount');
 
     return qb.getMany();
+  }
+
+  private encrypt(string: string) {
+    return hash(string, 11);
   }
 }
