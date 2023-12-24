@@ -22,6 +22,7 @@ config({ path: '.env.local' });
       entities: [__dirname + '/**/*.entity.{ts,js}'],
       synchronize: false,
       logging: true,
+      logger: 'advanced-console',
     }),
     BoardModule,
   ],

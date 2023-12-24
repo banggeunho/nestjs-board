@@ -7,7 +7,7 @@ export class BoardUpdateDto {
   title?: string;
 
   @IsOptional()
-  content?: string;
+  contents?: string;
 }
 
 // export class BoardUpdateDto extends PartialType(BoardCreateDto) {}

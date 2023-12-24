@@ -6,8 +6,9 @@ POST http://localhost:3000/board
 Content-Type: application/json
 
 {
+    "userId": 1,
     "title": "22",
-    "content": "new contetns"
+    "contents": "new contetns"
 }
 
 ###

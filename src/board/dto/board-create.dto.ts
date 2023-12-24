@@ -1,7 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, MaxLength, MinLength } from 'class-validator';
+import { IsNotEmpty, IsNumber, MaxLength, MinLength } from 'class-validator';
 
 export class BoardCreateDto {
+  @IsNotEmpty()
+  @IsNumber()
+  userId: number;
+
   @IsNotEmpty()
   @MinLength(2)
   @MaxLength(20)
@@ -18,5 +22,5 @@ export class BoardCreateDto {
     required: true,
     example: '나는요 바보바보바보',
   })
-  content: string;
+  contents: string;
 }
