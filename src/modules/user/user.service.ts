@@ -6,7 +6,7 @@ import { BoardEntity } from '../board/board.entity';
 import { UserCreateDto } from './dto/user-create.dto';
 import { hash, compare } from 'bcrypt';
 import { UserLoginDto } from './dto/user-login.dto';
-
+import { sign } from 'jsonwebtoken';
 @Injectable()
 export class UserService {
   constructor(
@@ -39,7 +39,19 @@ export class UserService {
       throw new HttpException('UNAUTHORIZED', HttpStatus.UNAUTHORIZED);
     }
 
-    return 'login success';
+    const payload = {
+      username,
+      name: user.name,
+    };
+
+    const accessToken = sign(payload, 'secret_key', {
+      expiresIn: '1h',
+    });
+
+    return {
+      name: user.name,
+      accessToken: accessToken,
+    };
   }
 
   public getMe() {
