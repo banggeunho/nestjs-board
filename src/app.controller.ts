@@ -15,6 +15,9 @@ import { ApiTags } from '@nestjs/swagger';
 import { Ip } from './decorators/ip.decorator';
 import { ConfigService } from '@nestjs/config';
 import { AuthGuard } from '@nestjs/passport';
+import { LocalAuthGuard } from './modules/auth/local.auth.guard';
+import { AuthService } from './modules/auth/auth.service';
+import { JwtAuthGuard } from './modules/auth/jwt.auth.guard';
 
 @Controller()
 @ApiTags('main')
@@ -22,6 +25,7 @@ export class AppController {
   constructor(
     private readonly appService: AppService,
     private readonly configService: ConfigService,
+    private readonly authService: AuthService,
   ) {}
 
   private readonly logger = new Logger(AppController.name);
@@ -53,9 +57,15 @@ export class AppController {
     throw new HttpException('Not Found', HttpStatus.NOT_FOUND);
   }
 
-  @UseGuards(AuthGuard('local'))
+  @UseGuards(LocalAuthGuard)
   @Post('login')
   async login(@Request() req) {
+    return this.authService.login(req.user);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('me')
+  async me(@Request() req) {
     return req.user;
   }
 }

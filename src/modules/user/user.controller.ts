@@ -19,11 +19,6 @@ export class UserController {
     return this.userService.login(data);
   }
 
-  @Get('me')
-  me() {
-    return this.userService.getMe();
-  }
-
   @Get()
   getUsers() {
     return this.userService.getUsers();
