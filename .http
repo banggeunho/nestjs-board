@@ -1,20 +1,21 @@
-GET http://localhost:3000/board
+GET http://localhost:3000/boards
 
 ###
 
-POST http://localhost:3000/board
+POST http://localhost:3000/boards
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwidXNlcm5hbWUiOiJzaGluZG9vMTIiLCJuYW1lIjoia2luZ2tpbiIsImlhdCI6MTcwMzQzMjAzNCwiZXhwIjoxNzAzNDM1NjM0fQ.RvoA0DhGk-QAyYMIgprEDe4fXiU-1576HfTjYMa5vm8
 
 {
-    "userId": 1,
     "title": "22",
     "contents": "new contetns"
 }
 
 ###
 
-PUT http://localhost:3000/board/13
+PUT http://localhost:3000/boards/18
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwidXNlcm5hbWUiOiJzaGluZG9vMTIiLCJuYW1lIjoia2luZ2tpbiIsImlhdCI6MTcwMzQzMjAzNCwiZXhwIjoxNzAzNDM1NjM0fQ.RvoA0DhGk-QAyYMIgprEDe4fXiU-1576HfTjYMa5vm8
 
 {
     "title": "geunhoasdadadassdasd",
@@ -23,7 +24,8 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/board/10
+DELETE http://localhost:3000/boards/15
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwidXNlcm5hbWUiOiJzaGluZG9vMTIiLCJuYW1lIjoia2luZ2tpbiIsImlhdCI6MTcwMzQzMjAzNCwiZXhwIjoxNzAzNDM1NjM0fQ.RvoA0DhGk-QAyYMIgprEDe4fXiU-1576HfTjYMa5vm8
 
 
 ###
@@ -36,7 +38,7 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "username": "shindoo12",
+    "username": "shindoo123",
     "password": "kingking",
     "name": "kingkin"
 }
@@ -67,4 +69,4 @@ Content-Type: application/json
 ###
 GET http://localhost:3000/me
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNoaW5kb28xMiIsIm5hbWUiOiJraW5na2luIiwiaWF0IjoxNzAzNDMwNzMyLCJleHAiOjE3MDM0MzQzMzJ9.ZIxihVUgJG4DYW-FS0t98TNtGo5VjhpNtsDkoD0dhG4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwidXNlcm5hbWUiOiJzaGluZG9vMTIiLCJuYW1lIjoia2luZ2tpbiIsImlhdCI6MTcwMzQzMjAzNCwiZXhwIjoxNzAzNDM1NjM0fQ.RvoA0DhGk-QAyYMIgprEDe4fXiU-1576HfTjYMa5vm8

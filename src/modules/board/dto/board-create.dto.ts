@@ -1,9 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, MaxLength, MinLength } from 'class-validator';
+import { IsNotEmpty, MaxLength, MinLength } from 'class-validator';
 
 export class BoardCreateDto {
-  @IsNotEmpty()
-  @IsNumber()
   userId: number;
 
   @IsNotEmpty()

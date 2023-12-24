@@ -15,6 +15,7 @@ export class AuthService {
     const user = await this.userService.getUserByUsername(username);
 
     if (user) {
+      console.log(user);
       const match = await compare(password, user.password);
       if (match) {
         return user;
@@ -26,6 +27,7 @@ export class AuthService {
 
   public async login(user: UserEntity) {
     const payload = {
+      id: user.id,
       username: user.username,
       name: user.name,
     };
