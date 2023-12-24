@@ -9,5 +9,3 @@ export class BoardUpdateDto {
   @IsOptional()
   contents?: string;
 }
-
-// export class BoardUpdateDto extends PartialType(BoardCreateDto) {}
