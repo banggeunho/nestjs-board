@@ -52,3 +52,14 @@ Content-Type: application/json
     "username": "shindoo12",
     "password": "kingking"
 }
+
+
+###
+
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "username": "shindoo12",
+    "password": "kingking"
+}

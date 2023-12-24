@@ -25,9 +25,7 @@ export class UserService {
 
   public async login(data: UserLoginDto) {
     const { username, password } = data;
-    const user = await this.userRepository.findOneBy({
-      username,
-    });
+    const user = await this.getUserByUsername(username);
 
     if (!user) {
       throw new HttpException('NOT_FOUND', HttpStatus.NOT_FOUND);
@@ -52,6 +50,12 @@ export class UserService {
       name: user.name,
       accessToken: accessToken,
     };
+  }
+
+  public async getUserByUsername(username: string) {
+    return await this.userRepository.findOneBy({
+      username,
+    });
   }
 
   public getMe() {

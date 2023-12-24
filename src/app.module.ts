@@ -7,6 +7,7 @@ import ConfigModule from './config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { config } from 'dotenv';
 import { UserModule } from './modules/user/user.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 config({ path: '.env.local' });
 
@@ -27,6 +28,7 @@ config({ path: '.env.local' });
     }),
     BoardModule,
     UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

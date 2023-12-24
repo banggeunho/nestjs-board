@@ -5,12 +5,16 @@ import {
   HttpStatus,
   Logger,
   Param,
+  Post,
   Query,
+  Request,
+  UseGuards,
 } from '@nestjs/common';
 import { AppService } from './app.service';
 import { ApiTags } from '@nestjs/swagger';
 import { Ip } from './decorators/ip.decorator';
 import { ConfigService } from '@nestjs/config';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller()
 @ApiTags('main')
@@ -47,5 +51,11 @@ export class AppController {
   @Get('error')
   error() {
     throw new HttpException('Not Found', HttpStatus.NOT_FOUND);
+  }
+
+  @UseGuards(AuthGuard('local'))
+  @Post('login')
+  async login(@Request() req) {
+    return req.user;
   }
 }
