@@ -11,7 +11,8 @@ import {
 } from '@nestjs/common';
 import { BoardService } from './board.service';
 import { ApiTags } from '@nestjs/swagger';
-import { CreateBoardDto } from './dto/board-create.dto';
+import { BoardCreateDto } from './dto/board-create.dto';
+import { BoardUpdateDto } from './dto/board-update.dto';
 
 @Controller('board')
 @ApiTags('Board')
@@ -29,14 +30,14 @@ export class BoardController {
   }
 
   @Post()
-  create(@Body(new ValidationPipe()) data: CreateBoardDto) {
+  create(@Body(new ValidationPipe()) data: BoardCreateDto) {
     return this.boardService.create(data);
   }
 
   @Put(':id')
   update(
     @Param('id', ParseIntPipe) id: number,
-    @Body(new ValidationPipe()) data: CreateBoardDto,
+    @Body(new ValidationPipe()) data: BoardUpdateDto,
   ) {
     return this.boardService.update(id, data);
   }

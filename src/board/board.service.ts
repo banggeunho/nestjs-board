@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { CreateBoardDto } from './dto/board-create.dto';
+import { BoardCreateDto } from './dto/board-create.dto';
+import { BoardUpdateDto } from './dto/board-update.dto';
 
 @Injectable()
 export class BoardService {
@@ -43,7 +44,7 @@ export class BoardService {
     return this.boards.find((board) => board.id === id);
   }
 
-  create(data: CreateBoardDto) {
+  create(data: BoardCreateDto) {
     const newBoard = {
       id: this.boards.length + 1,
       ...data,
@@ -52,7 +53,7 @@ export class BoardService {
     return this.boards;
   }
 
-  update(id: number, data: CreateBoardDto) {
+  update(id: number, data: BoardUpdateDto) {
     const board = this.findById(id);
 
     board.content = data.content;

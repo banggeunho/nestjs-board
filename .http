@@ -6,8 +6,8 @@ POST http://localhost:3000/board
 Content-Type: application/json
 
 {
-    "name": "geunho",
-    "contents": "new contetns"
+    "title": "22",
+    "content": "new contetns"
 }
 
 ###
@@ -16,8 +16,7 @@ PUT http://localhost:3000/board/1
 Content-Type: application/json
 
 {
-    "name": "geunho",
-    "contents": "new contetns"
+    "title": "geunhoasdadadassdasd"
 }
 
 ###
