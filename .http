@@ -65,6 +65,6 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3000/me
+GET http://localhost:3000/me
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNoaW5kb28xMiIsIm5hbWUiOiJraW5na2luIiwiaWF0IjoxNzAzNDMwNzMyLCJleHAiOjE3MDM0MzQzMzJ9.ZIxihVUgJG4DYW-FS0t98TNtGo5VjhpNtsDkoD0dhG4

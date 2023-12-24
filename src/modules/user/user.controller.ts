@@ -1,6 +1,14 @@
 import { ApiTags } from '@nestjs/swagger';
 import { UserService } from './user.service';
-import { Body, Controller, Get, Post, ValidationPipe } from '@nestjs/common';
+import {
+  Body,
+  ClassSerializerInterceptor,
+  Controller,
+  Get,
+  Post,
+  UseInterceptors,
+  ValidationPipe,
+} from '@nestjs/common';
 import { UserCreateDto } from './dto/user-create.dto';
 import { UserLoginDto } from './dto/user-login.dto';
 
@@ -20,6 +28,7 @@ export class UserController {
   }
 
   @Get()
+  @UseInterceptors(ClassSerializerInterceptor)
   getUsers() {
     return this.userService.getUsers();
   }

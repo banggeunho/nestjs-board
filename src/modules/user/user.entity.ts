@@ -1,5 +1,6 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { BoardEntity } from '../board/board.entity';
+import { Exclude } from 'class-transformer';
 
 @Entity({ name: 'User' })
 export class UserEntity {
@@ -9,7 +10,8 @@ export class UserEntity {
   @Column({ unique: true })
   username: string;
 
-  @Column({ select: true })
+  @Column({ select: false })
+  @Exclude()
   password: string;
 
   @Column()
