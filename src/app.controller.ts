@@ -1,4 +1,11 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  HttpException,
+  HttpStatus,
+  Param,
+  Query,
+} from '@nestjs/common';
 import { AppService } from './app.service';
 import { ApiTags } from '@nestjs/swagger';
 import { Ip } from './decorators/ip.decorator';
@@ -21,5 +28,10 @@ export class AppController {
   @Get('name')
   getNameQuery(@Ip() ip: string, @Query('name') name: string): string {
     return `${name} hello ${ip}`;
+  }
+
+  @Get('error')
+  error() {
+    throw new HttpException('Not Found', HttpStatus.NOT_FOUND);
   }
 }
