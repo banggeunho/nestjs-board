@@ -3,6 +3,7 @@ import {
   Get,
   HttpException,
   HttpStatus,
+  Logger,
   Param,
   Query,
 } from '@nestjs/common';
@@ -14,6 +15,8 @@ import { Ip } from './decorators/ip.decorator';
 @ApiTags('main')
 export class AppController {
   constructor(private readonly appService: AppService) {}
+
+  private readonly logger = new Logger(AppController.name);
 
   @Get()
   getHello(): string {
@@ -27,6 +30,12 @@ export class AppController {
 
   @Get('name')
   getNameQuery(@Ip() ip: string, @Query('name') name: string): string {
+    this.logger.debug(`${name} hello ${ip}`);
+    this.logger.fatal(`${name} hello ${ip}`);
+    this.logger.warn(`${name} hello ${ip}`);
+    this.logger.log(`${name} hello ${ip}`);
+    this.logger.verbose(`${name} hello ${ip}`);
+    this.logger.error(`${name} hello ${ip}`);
     return `${name} hello ${ip}`;
   }
 
