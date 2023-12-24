@@ -1,4 +1,3 @@
-import { ApiProperty } from '@nestjs/swagger';
 import { IsOptional, MaxLength, MinLength } from 'class-validator';
 
 export class BoardUpdateDto {

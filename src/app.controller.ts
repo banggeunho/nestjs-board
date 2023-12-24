@@ -1,6 +1,7 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
 import { AppService } from './app.service';
 import { ApiTags } from '@nestjs/swagger';
+import { Ip } from './decorators/ip.decorator';
 
 @Controller()
 @ApiTags('main')
@@ -18,7 +19,7 @@ export class AppController {
   }
 
   @Get('name')
-  getNameQuery(@Query('name') name: string): string {
-    return `${name} hello`;
+  getNameQuery(@Ip() ip: string, @Query('name') name: string): string {
+    return `${name} hello ${ip}`;
   }
 }
