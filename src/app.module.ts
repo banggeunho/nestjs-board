@@ -21,7 +21,7 @@ config({ path: '.env.local' });
       database: process.env.DB_NAME,
       entities: [__dirname + '/**/*.entity.{ts,js}'],
       synchronize: false,
-      logging: ['query', 'schema', 'error', 'warn', 'info'],
+      logging: true,
     }),
     BoardModule,
   ],
