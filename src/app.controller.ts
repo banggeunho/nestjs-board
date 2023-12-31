@@ -14,7 +14,6 @@ import { AppService } from './app.service';
 import { ApiTags } from '@nestjs/swagger';
 import { Ip } from './decorators/ip.decorator';
 import { ConfigService } from '@nestjs/config';
-import { AuthGuard } from '@nestjs/passport';
 import { LocalAuthGuard } from './modules/auth/local.auth.guard';
 import { AuthService } from './modules/auth/auth.service';
 import { JwtAuthGuard } from './modules/auth/jwt.auth.guard';

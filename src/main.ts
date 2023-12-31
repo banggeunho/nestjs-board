@@ -2,6 +2,8 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { HttpExceptionFilter } from './exceptions/http.exception';
+import { readFile } from 'fs';
+import { join } from 'path';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -15,37 +17,14 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  console.log(`
-                                                 *
+  readFile(join(__dirname, '/config/running.txt'), 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading ascii art file', err);
+      return;
+    }
 
-               *        /)___________/)
-                       / ,--o ______/ /       *         *
-                      / /__\\       / |               *
-   *                 /  {''}]     /  |
-                     .--{~\`/--.   )  \\__              *
-                    /   { }    \\ /     /
-         *         /_/   ~   /_//'  / /
-                 .-""==="==="" |   / /
-   *             /  |-(__)(__)/__| /_/  *         *
-               /   | \\  |\\  |__ ) /
-              /   / //_/ /_/   / /
-             /  _/_/________  / /   *       *
-  *          /  (            (/ /
-           /    \\==========   /
-       snd/      (___________/                    *
-         /      _/ /     _/ /
- |\\/|   /      \\\\\\_/     \\\\_/   *     
- 00 | _/________ |\\/|    /
-/_/|_\\/          00 |  _/    *             *
- __/ )|         /_/|_\\//
-VV--   \\         __/ )|
-   |_   |       VV--   \\
-  / / / )          |_   |    *       *             
- |_|_/\\_/\\____    / / / )       *                *
-  ////  '-----'  |_|_/\\_/\\____ 
- ////             ////         *        *
-                 
-`);
+    console.log(data);
+  });
 
   await app.listen(3000);
 }

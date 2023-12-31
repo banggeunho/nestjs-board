@@ -13,7 +13,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwidXNlcm5hb
 
 ###
 
-PUT http://localhost:3000/boards/18
+PUT http://localhost:3000/boards/13
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwidXNlcm5hbWUiOiJzaGluZG9vMTIiLCJuYW1lIjoia2luZ2tpbiIsImlhdCI6MTcwMzQzMjAzNCwiZXhwIjoxNzAzNDM1NjM0fQ.RvoA0DhGk-QAyYMIgprEDe4fXiU-1576HfTjYMa5vm8
 
